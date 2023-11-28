@@ -21,7 +21,7 @@ public class Probsd1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	//arreglo guardar varios valores	0	1	2	3
+	//arreglo puede guardar varios valores	0	           1	 2	   3
 	//private String[] arr_codigo= {"Selecciona codigo", "101","102","103"};
 	private JComboBox cbocodigo;	//global
 
@@ -67,12 +67,20 @@ public class Probsd1 extends JFrame {
 		contentPane.add(lblcantidad);
 		
 		cbocodigo = new JComboBox();
-		cbocodigo.setBounds(164, 53, 90, 39);
+		cbocodigo.setBounds(164, 53, 131, 39);
+		//cbocodigo.additem("Seleccione codigo");
+		//cbocodigo.additem("101");
+		//cbocodigo.additem("102");
+		//cbocodigo.additem("103");
+		//For es Sentencia de repeticion que inicia en 0 y termina en 4 porque el arreglo tiene 4 valores; y aumenta de uno en uno
+		//for( int x=0; x<arr_codigo.length;x++)	{
+		//	cbocodigo.addItem(arr_codigo[x]);			
+		//}		
 		llenarArreglo();
 		contentPane.add(cbocodigo);
 		
 		JSpinner spncantidad = new JSpinner();
-		spncantidad.setBounds(164, 99, 90, 43);
+		spncantidad.setBounds(164, 99, 131, 43);
 		contentPane.add(spncantidad);		
 		
 		JScrollPane spcresultado = new JScrollPane();
@@ -86,8 +94,8 @@ public class Probsd1 extends JFrame {
 		btnprocesar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Declaracion de Variables
-				int cantidad, caramelos;
-				double precio=0, impcom, impdes=0, imppag;					
+				int cantidad, caramelos=0;
+				double precio=0, impcom, impdes=0, imppag=0;					
 				
 				
 				//Entrada de datos
@@ -123,10 +131,11 @@ public class Probsd1 extends JFrame {
 				imppag=impcom-impdes;
 				
 				//Calculo los caramelos
-				if (imppag>250)
+				if (imppag>250)	{
 					caramelos=3*cantidad;				
-				else
+				}else	{
 					caramelos=2*cantidad;
+				}	
 				
 				//Salida
 				txtresultado.setText("Precio del Producto   :"+precio+"\n");
@@ -144,12 +153,12 @@ public class Probsd1 extends JFrame {
 		btnborrar.setBounds(330, 103, 109, 39);
 		contentPane.add(btnborrar);
 	}
-	//METODO
-	//PUBLICO no haya retorno nombreMetodo
+	
+	//Metodo PUBLICO que no haya retorno y el nombreMetodo
 	public void llenarArreglo()	{
-		String	[] arr_codigos=	{"Seleccione codigo", "101", "102", "103"};
+		String	[] arr_codigos=	{"Seleccione codigo","101","102","103"};
 		for (String codigo: arr_codigos) {
-			cbocodigo.addItem(codigo);				
+			cbocodigo.addItem(codigo);			
 		}
 	}
 }
